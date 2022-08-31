@@ -1,0 +1,145 @@
+﻿driver.findElement(By.tagName("body")).sendKeys("Keys.ESCAPE");
+
+((JavascriptExecutor) driver).executeScript("return window.stop");
+
+IJavaScriptExecutor js = (IJavaScriptExecutor)driver; //Driver is the WebDriver object
+js.ExecuteScript("document.getElementsByTagName('img')[2].setAttribute('src', 'Hello')");
+
+//driver.FindElement(By.TagName("body")).SendKeys("Keys.ESCAPE");
+
+
+
+
+/*
+            //var p = IkeltiParametrus(xlApp, @"C:\Users\Nojus\source\repos\NojusSajauskas_JKM_baigiamasis_2020_2021\duom.xlsx");
+            Excel.Workbook xlFile = xlApp.Workbooks.Open(@"C:\Users\Nojus\source\repos\NojusSajauskas_JKM_baigiamasis_2020_2021\Duomenys.xlsx");
+
+            //loading params
+            Excel._Worksheet xlParams = xlFile.Sheets[1];
+
+            //[ROW, COLUMN]
+            //excel start counting from 1
+            //string slapyvardis = xlParams.Cells[3, 2].value2;
+            string slapyvardis = "geraskalnasok";
+            //string slaptazodis = xlParams.Cells[4, 2].value2;
+            string slaptazodis = "t40a43d3";
+
+            string narsykle = "chrome";
+            bool nuotolinisDriver = true;
+            string nuotolinioDriverAdresas = "http://nojuspi:9515";
+            bool rodytiLanga = true;
+            //bool rodytiLanga = xlParams.Cells[6, 2].value2 > 0 ? true : false;
+            int ilgiausiasElementoIeskojimoLaikas = 5;
+            //int ilgiausiasElementoIeskojimoLaikas = int.Parse(xlParams.Cells[7, 2].value2.ToString());
+
+
+            bool skanuotiPazymius = false;
+            string pazymiuSkanavimoApimtis = "1";//1 pusmetis
+            string pazymiuExcelFailas = "IsvestisPazymiai.xlsx";
+
+
+            bool skanuotiKlasesDarbus = true;
+            string klasesDarbuSkanavimoApimtis = "pending";//month, lweek, week, yesterday, today, tommorow, pending
+            string klasesDarbuIsvestis = "kl.txt";
+            int daugiausiaiKlasesDarbu = 3;
+            bool skanuotiNamuDarbus = true;
+            string namuDarbuSkanavimoApimtis = "pending";//month, lweek, week, yesterday, today, tommorow, pending
+            string namuDarbuIsvestis = "nd.txt";
+            int daugiausiaiNamuDarbu = 3;
+
+            bool skanuotiNaujasZinutes = true;
+            int daugiausiaiNaujuZinuciu = 1;
+            string naujuZinuciuIsvestis = "new_msg.txt";
+            bool skanuotiSenasZinutes = true;
+            int daugiausiaiSenuZinuciu = 3; // reiks padaryt kad, -1 reikstu visas
+            string senuZinuciuIsvestis = "old_msg.txt";
+
+
+            //...
+
+
+            Marshal.ReleaseComObject(xlParams);
+            //xlFile.Close();
+            Marshal.ReleaseComObject(xlFile);
+
+
+            */
+
+
+
+            /*
+            static Dictionary<string, string> IkeltiParametrus(Excel.Application xlApp, string @ivestis)
+        {
+            Dictionary<string, string> parametrai = new Dictionary<string, string>(){
+                {"Parametras", "Reiksme" },
+                {"slapyvardis", "slapyvardis"},
+                {"slaptazodis", "slaptazodis"},
+                {"rodyti_chrome_langa", "1"},
+                {"arRodytiChromeLanga", "1" },
+                {"narsykle", "chrome" },
+                {"nuotolinisDriver", "0"},
+                {"nuotolinioDriverAdresas", "http://192.168.0.10:9515" },
+                {"laikmatisElementuiIeskotiS", "5" },
+                {"atsitiktinisUzdelsimas", "0" },
+                {"uzdelsimoTrukmeNuoMS", "1500" },
+                {"uzdelsimoTrukmeIkiMS", "3000" },
+                {"Pazymiai", "" },
+                {"arIeskotiPazymiu", "0" },
+                {"pazymiuIsvestis", "pazymiai.xlsx" },
+                {"Pranesimai", "" },
+                {"arIeskotiPranesimu", "1" },
+                {"naujuPranesimuSkaicius", "0" },
+                {"naujuPranesimuIsvestis", "nZin.txt" },
+                {"senuPranesimuSkaicius", "3"},
+                {"senuPranesimuIsvestis", "sZin.txt"},
+                {"Pamokos", "" },
+                {"ieskotiNamuDarbu","0"},
+                {"namuDarbuIsvestis", "nd.txt" },
+                {"ieskotiKlaseDarbu", "0" },
+                {"klasesDarbuIsvestis", "kd.txt" },
+                {"darbuAtgalDalykuPamokuSkaicius", "10" }
+             };
+
+            Excel.Workbook xlParamsFailas;
+            Excel.Worksheet xlParams;
+            if (!File.Exists(ivestis))//irasomi numatytieji
+            {
+
+                //xlParamsFailas = xlApp.Workbooks.Add(Type.Missing);
+                xlParamsFailas = xlApp.Application.Workbooks.Add();
+                xlParams = (Microsoft.Office.Interop.Excel.Worksheet)xlParamsFailas.ActiveSheet;
+                xlParams.Name = "Ivestis";
+
+                int j = 1;
+                foreach (var i in parametrai.Keys)
+                {
+                    xlParams.Cells[j, 1].Value2 = i;
+                    xlParams.Cells[j++, 2].Value2 = parametrai[i];
+                }
+                xlParamsFailas.SaveAs(ivestis);
+
+                Marshal.ReleaseComObject(xlParams);
+                xlParamsFailas.Close();
+                Marshal.ReleaseComObject(xlParamsFailas);
+            }
+                xlParamsFailas = xlApp.Workbooks.Open(ivestis);
+                xlParams = xlParamsFailas.Sheets[1];
+                Excel.Range xlParamsApimtis = xlParams.UsedRange;
+                int eilSkc = xlParamsApimtis.Rows.Count;
+
+
+            for (int j = 0; j < eilSkc; j++)
+            {
+                if (xlParamsApimtis.Cells[1, j] != null && xlParamsApimtis.Cells[1, j].Value2 != null && xlParamsApimtis.Cells[2, j] != null && xlParamsApimtis.Cells[2, j].Value2 != null)
+                {
+                    parametrai[xlParamsApimtis.Cells[1, j].Value2.ToString()] = xlParamsApimtis.Cells[2, j].Value2.ToString();
+                }
+            }
+
+            Marshal.ReleaseComObject(xlParams);
+            xlParamsFailas.Close();
+            Marshal.ReleaseComObject(xlParamsFailas);
+
+            return parametrai;
+        }
+        */

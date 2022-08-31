@@ -1,0 +1,40 @@
+﻿Padaryta
+Dabar
+Veliau
+Bugas (gali buti arba B! yra)
+
+VB! paziurima ar yra nustatymu failas, jei ne sukuriama su numatytaisiais, zinute ir iseinama (problematiska)(nezinau kaip tai padaryt)
+
+D sukuriamos konstantos is nustatymu
+
+P atidaroma chromedriver tiesiogiai per dabartine arba nuotoline sistema
+
+P paleidziama chrome, parodomas langas jei taip nustatyta
+
+P prisijungiama, pagal prisijungimo parametrus
+
+D pazymiu tikrinimas
+
+DB pazymiu surasymas i excel
+
+DB pazymiu datos
+
+P namu darbu tikrinimas
+
+P klases darbu tikrinimas
+
+PB namu/klases darbu surasymas i failus
+
+
+P zinuciu tikrinimas
+
+P nauju zinuciu atpazinimas
+
+PB zinuciu surasymas i tekstinius failus
+
+PB atsijungimas
+
+PB! excel uzdarymas
+
+B! chrome uzdaroma (esant klaidai kol kas neuzdaroma)
+
